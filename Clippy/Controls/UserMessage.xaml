@@ -1,0 +1,23 @@
+﻿<UserControl
+    x:Class="Clippy.Controls.UserMessage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Clippy.Controls"
+    xmlns:ToolkitControls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:icons="using:CubeKit.UI.Icons"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <ToolkitControls:DropShadowPanel BlurRadius="16.0" ShadowOpacity="0.43" IsMasked="True" CornerRadius="8"
+                          OffsetX="0.0" OffsetY="0.0" VerticalAlignment="Bottom" Color="Black" HorizontalAlignment="Stretch">
+                <Grid  BorderBrush="{ThemeResource MicaBorderBrush}" BorderThickness="0, 1, 0, 0" HorizontalAlignment="Stretch" Background="{ThemeResource MicaBrush}" CornerRadius="8">
+                    <Grid Background="{ThemeResource MicaBlurBrush}" Padding="12">
+                        <TextBlock Text="{x:Bind Message, Mode=OneWay}" Width="290" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </ToolkitControls:DropShadowPanel>
+            <local:MessageTriangle HorizontalAlignment="Left" Margin="24, -1, 0, 0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

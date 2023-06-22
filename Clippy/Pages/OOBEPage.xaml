@@ -1,0 +1,386 @@
+﻿<Page
+    x:Class="Clippy.Pages.OOBEPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Clippy.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:Materials="using:CubeKit.UI.Materials" 
+    xmlns:controls="using:CubeKit.UI.Controls.Toolkit" 
+    xmlns:icons="using:CubeKit.UI.Icons"
+    xmlns:media="using:CommunityToolkit.WinUI.UI.Media" xmlns:controls1="using:CommunityToolkit.WinUI.UI.Controls"
+    Background="Transparent"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Name="LoadingAnimation">
+            <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" RepeatBehavior="Forever" Storyboard.TargetProperty="(Control.Foreground).(Brush.RelativeTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="bar1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="LoadingAnimation2">
+            <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" RepeatBehavior="Forever" Storyboard.TargetProperty="(Control.Foreground).(Brush.RelativeTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="bar2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <LinearGradientBrush x:Name="ShineBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <LinearGradientBrush.RelativeTransform>
+                <CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="95"/>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Color="{ThemeResource SystemAccentColor}" Offset="0.3"/>
+            <GradientStop Color="{ThemeResource SystemAccentColorLight2}" Offset="0.5"/>
+            <GradientStop Color="{ThemeResource SystemAccentColor}" Offset="0.8"/>
+        </LinearGradientBrush>
+
+
+        <Style x:Key="ClassicRadio" TargetType="RadioButton">
+            <Setter Property="Background" Value="{ThemeResource RadioButtonBackground}" />
+            <Setter Property="Foreground" Value="{ThemeResource RadioButtonForeground}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource RadioButtonBorderBrush}" />
+            <Setter Property="Padding" Value="8,6,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Top" />
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+            <Setter Property="MinWidth" Value="110" />
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+            <Setter Property="FocusVisualMargin" Value="-7,-3,-7,-3" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OuterEllipse" Storyboard.TargetProperty="Stroke">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseStroke}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OuterEllipse" Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseFill}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="Stroke">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStroke}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedFill}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ResponsiveAccentBrush3}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Stroke">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonCheckGlyphStroke}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedCheckGlyph" Storyboard.TargetProperty="Width" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlFastAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedCheckGlyph" Storyboard.TargetProperty="Height" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlFastAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonForegroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBackgroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBorderBrushPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="Stroke">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStrokePointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedFillPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ResponsiveAccentBrush3}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Stroke">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonCheckGlyphStrokePointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Width" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlNormalAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="12.4" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Height" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlNormalAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="12.4" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedCheckGlyph" Storyboard.TargetProperty="Opacity">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedCheckGlyph" Storyboard.TargetProperty="Width" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0.2" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="8" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedCheckGlyph" Storyboard.TargetProperty="Height" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0.2" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="8" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                        <VisualState.Setters>
+                                            <Setter Target="PressedCheckGlyph.Width" Value="0"/>
+                                            <Setter Target="PressedCheckGlyph.Height" Value="0"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBackgroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBorderBrushPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="Stroke">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStrokePressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedFillPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ResponsiveAccentBrush3}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Stroke">
+                                                <DiscreteObjectKeyFrame  KeyTime="0" Value="{ThemeResource RadioButtonCheckGlyphStrokePressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Width" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlNormalAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="6" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Height" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlNormalAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="6" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedCheckGlyph" Storyboard.TargetProperty="Opacity">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedCheckGlyph" Storyboard.TargetProperty="Width" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlFastAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="10" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedCheckGlyph" Storyboard.TargetProperty="Height" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlFastAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="10" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonForegroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBackgroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBorderBrushDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames  Storyboard.TargetName="OuterEllipse" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame  KeyTime="{StaticResource ControlFasterAnimationDuration}" Value="{ThemeResource RadioButtonOuterEllipseStrokeDisabled}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="OuterEllipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="{StaticResource ControlFasterAnimationDuration}" Value="{Binding Color, Source={ThemeResource RadioButtonOuterEllipseFillDisabled}}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames  Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="{StaticResource ControlFasterAnimationDuration}" Value="{ThemeResource RadioButtonOuterEllipseCheckedStrokeDisabled}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="{StaticResource ControlFasterAnimationDuration}" Value="{ThemeResource RadioButtonOuterEllipseCheckedFillDisabled}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonCheckGlyphFillDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Stroke">
+                                                <DiscreteObjectKeyFrame  KeyTime="0" Value="{ThemeResource RadioButtonCheckGlyphStrokeDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Width" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlFastAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="14" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Height" EnableDependentAnimation="True">
+                                                <SplineDoubleKeyFrame KeyTime="{StaticResource ControlFastAnimationDuration}" KeySpline="{StaticResource ControlFastOutSlowInKeySpline}" Value="14" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                                            <DoubleAnimation Storyboard.TargetName="OuterEllipse" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                                            <DoubleAnimation Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                                            <DoubleAnimation Storyboard.TargetName="PressedCheckGlyph" Storyboard.TargetProperty="Opacity" To="0" Duration="0" />
+                                            <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Stroke">
+                                                <DiscreteObjectKeyFrame  KeyTime="0" Value="{ThemeResource ResponsiveAccentBrush3}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked" />
+                                    <VisualState x:Name="Indeterminate" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Height="200" Width="400">
+                                <Image Stretch="UniformToFill" Source="ms-appx:///Assets/OOBE/Classic.png" Width="365"/>
+                                <Grid Canvas.ZIndex="3" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="8" Height="32">
+                                    <Ellipse x:Name="OuterEllipse" Width="20" Height="20" UseLayoutRounding="False" Stroke="{ThemeResource RadioButtonOuterEllipseStroke}" Fill="{StaticResource RadioButtonOuterEllipseFill}" StrokeThickness="{ThemeResource RadioButtonBorderThemeThickness}" />
+
+                                    <!-- A seperate element is added since the two orthogonal state groups that cannot touch the same property -->
+
+                                    <Ellipse x:Name="CheckOuterEllipse" Visibility="Collapsed" Width="20" Height="20" UseLayoutRounding="False" Stroke="{ThemeResource RadioButtonOuterEllipseCheckedStroke}" Fill="{ThemeResource RadioButtonOuterEllipseCheckedFill}" Opacity="0" StrokeThickness="{ThemeResource RadioButtonBorderThemeThickness}" />
+                                    <controls:DropShadowPanel BlurRadius="16.0" IsMasked="True" x:Name="Glow"
+                          OffsetX="0.0" OffsetY="0.0" Color="{ThemeResource SystemAccentColorLight3}" Width="{ThemeResource RadioButtonCheckGlyphSize}" UseLayoutRounding="False" Height="{ThemeResource RadioButtonCheckGlyphSize}">
+                                        <Ellipse x:Name="CheckGlyph" Width="{ThemeResource RadioButtonCheckGlyphSize}"  Height="{ThemeResource RadioButtonCheckGlyphSize}" UseLayoutRounding="False" Opacity="0" Stroke="{ThemeResource RadioButtonCheckGlyphStroke}">
+                                            <Ellipse.Fill>
+                                                <media:RadialGradientBrush>
+                                                    <GradientStop Color="{ThemeResource SystemAccentColorLight2}" Offset="0.0"/>
+                                                    <GradientStop Color="{ThemeResource SystemAccentColorLight3}" Offset="1"/>
+                                                </media:RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                    </controls:DropShadowPanel>
+                                    <!-- A seperate element is added since the two orthogonal state groups that cannot touch the same property -->
+
+                                    <Border x:Name="PressedCheckGlyph" Width="4" Height="4" CornerRadius="4" UseLayoutRounding="False" Opacity="0" BackgroundSizing="OuterBorderEdge" Background="{ThemeResource RadioBrush}" BorderBrush="{ThemeResource RadioButtonCheckGlyphStroke}"/>
+
+                                </Grid>
+                            </Grid>
+                            <ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" ContentTemplate="{TemplateBinding ContentTemplate}" Foreground="{TemplateBinding Foreground}" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="1" AutomationProperties.AccessibilityView="Raw" TextWrapping="Wrap" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Materials:BloomView Visibility="Collapsed" Height="800" Width="1000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Grid x:Name="Container">
+            <StackPanel Canvas.ZIndex="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" x:Name="OpenRing" Visibility="Collapsed" >
+                <muxc:ProgressRing IsActive="True" Height="80" Width="80"/>
+                <TextBlock FontWeight="SemiBold" FontSize="24" VerticalAlignment="Center" Margin="24, 0, 0, 0">Loading...</TextBlock>
+            </StackPanel>
+            <Rectangle x:Name="hostForVisual" Fill="Transparent"/>
+            <StackPanel HorizontalAlignment="Center" Canvas.ZIndex="2"  VerticalAlignment="Center">
+
+                <controls1:DropShadowPanel Canvas.ZIndex="2" BlurRadius="16" ShadowOpacity="0.12" OffsetY="24" OffsetX="24" CornerRadius="8">
+
+                    <FlipView RequiresPointer="Never" BorderBrush="{ThemeResource BorderHighContrastBrush}" BorderThickness="3" Margin="20"
+            Background="{ThemeResource SortHvidBrush}" VerticalAlignment="Stretch"
+            MaxHeight="480" HorizontalAlignment="Stretch" MaxWidth="800" 
+            CornerRadius="8" x:Name="FlappyBird" SelectionChanged="FlappyBird_SelectionChanged"
+            Style="{StaticResource OOBEFlipViewStyle}">
+                        <FlipViewItem>
+                            <Grid>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="8">
+                                    <Image Stretch="UniformToFill" Source="ms-appx:///Assets/OOBE/LaunchOOBE.png" Width="365"/>
+
+                                    <StackPanel Orientation="Vertical" Margin="28,40,28,0" Width="375">
+                                        <icons:FluentSymbolIcon Symbol="Beach24" Foreground="{ThemeResource ResponsiveAccentBrush1}" HorizontalAlignment="Left" Margin="0,0,0,12" RenderTransformOrigin="0.5,0.5">
+                                            <icons:FluentSymbolIcon.RenderTransform>
+                                                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                            </icons:FluentSymbolIcon.RenderTransform>
+                                        </icons:FluentSymbolIcon>
+                                        <TextBlock Text="Welcome to Run By FireCube (Not by microsoft)!" TextWrapping="WrapWholeWords" Width="325" FontSize="32" Margin="0,0,0,12" FontWeight="SemiBold" CharacterSpacing="-20"/>
+                                        <TextBlock Opacity="0.70" LineHeight="24" Width="325" HorizontalAlignment="Left"
+                            Text="Thank you for downloading Run By FireCube (Not by microsoft). After following this quick setup, you can begin using the app!" TextWrapping="WrapWholeWords"/>
+                                        <StackPanel Orientation="Horizontal" Margin="0,172,0,0" >
+                                            <Button Content="Release Notes" Visibility="Collapsed" Background="Transparent" IsEnabled="False" BorderThickness="0.5" BorderBrush="{ThemeResource HvidSortBrush}" Padding="16,8,16,8"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </Grid>
+                        </FlipViewItem>
+
+                        <FlipViewItem>
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="8">
+                                    <Image Stretch="UniformToFill" Source="ms-appx:///Assets/OOBE/Classic.png" Width="365"/>
+
+                                    <StackPanel Orientation="Vertical" Margin="28,40,28,0" Width="375">
+                                        <icons:FluentSymbolIcon Symbol="Settings24" Foreground="{ThemeResource ResponsiveAccentBrush1}" HorizontalAlignment="Left" Margin="0,0,0,12" RenderTransformOrigin="0.5,0.5">
+                                            <icons:FluentSymbolIcon.RenderTransform>
+                                                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                            </icons:FluentSymbolIcon.RenderTransform>
+                                        </icons:FluentSymbolIcon>
+                                        <TextBlock Text="Customize Settings" FontSize="32" Margin="0,0,0,12" FontWeight="SemiBold" CharacterSpacing="-20"/>
+                                        <Grid Padding="12, 8, 12, 4" Background="{ThemeResource LayerFillColorDefaultBrush}" Margin="4, 8, 12, 8" CornerRadius="4" BorderThickness="1" BorderBrush="{ThemeResource MicaBorderBrush}">
+                                            <StackPanel HorizontalAlignment="Left">
+                                                <TextBlock Text="Remain in background" MaxWidth="220" FontWeight="SemiBold" Margin="0, 0, 0, 4"/>
+                                                <TextBlock Text="**Required for Win + Shift + R" MaxWidth="220" Opacity="0.7" />
+                                            </StackPanel>
+                                            <ToggleSwitch IsOn="{x:Bind Settings.PersistAppInBackground, Mode=TwoWay}" Margin="4, 4, -80, 4" Style="{ThemeResource GlowSwitch}" HorizontalAlignment="Right"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </FlipViewItem>
+
+                        <FlipViewItem>
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="8">
+                                    <Image Stretch="UniformToFill" Source="ms-appx:///Assets/OOBE/Compact.png" Width="365"/>
+
+                                    <StackPanel Orientation="Vertical" Margin="28,40,28,0" Width="375">
+                                        <icons:FluentSymbolIcon Symbol="Info24" Foreground="{ThemeResource ResponsiveAccentBrush1}" HorizontalAlignment="Left" Margin="0,0,0,12" RenderTransformOrigin="0.5,0.5">
+                                            <icons:FluentSymbolIcon.RenderTransform>
+                                                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                            </icons:FluentSymbolIcon.RenderTransform>
+                                        </icons:FluentSymbolIcon>
+                                        <TextBlock Text="Preview" FontSize="32" Margin="0,0,0,12" FontWeight="SemiBold" CharacterSpacing="-20"/>
+                                        <TextBlock LineHeight="24" HorizontalAlignment="left" Margin="0, 0, 24, 0">
+                                            - Keyboard shortcut not customizable
+                                            <LineBreak/>
+                                            - Every single command may not work
+                                            <LineBreak/>
+                                            - Administrator mode not available
+                                            <LineBreak/>
+                                            ✓ Open source
+                                        </TextBlock>
+                                        <HyperlinkButton Margin="6, 0, 0, 0" Content="GitHub" NavigateUri="https://github.com/FireCubeStudios/Run"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </FlipViewItem>
+                        <FlipViewItem >
+                            <StackPanel Orientation="Vertical" Margin="28,120,28,0" Width="375" HorizontalAlignment="Center">
+                                <FontIcon Glyph="&#xE001;" FontSize="40" Foreground="{ThemeResource ResponsiveAccentBrush1}" HorizontalAlignment="Center" Margin="0,0,0,16" />
+                                <TextBlock Text="Choose a Theme!" FontSize="32" Margin="0,0,0,12" FontWeight="SemiBold" CharacterSpacing="-20" HorizontalAlignment="Center"/>
+                                <muxc:RadioButtons x:Name="Theme" SelectedIndex="0">
+                                    <RadioButton Content="Classic"/>
+                                    <RadioButton Content="Compact"/>
+                                </muxc:RadioButtons>
+                                <Button HorizontalAlignment="Center" Padding="16,10,16,10" Style="{StaticResource AccentButtonStyle}" BorderBrush="{ThemeResource MicaBorderBrush}" Margin="0, 40,0,0" Click="CompletedOOBE_Click">
+                                    <Button.Content >
+                                        <StackPanel Orientation="Horizontal">
+                                            <FontIcon Glyph="&#xE0AB;" Margin="0,0,12,0" FontSize="14"/>
+                                            <TextBlock Text="Start using app"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                        </FlipViewItem>
+                    </FlipView>
+                </controls1:DropShadowPanel>
+                <StackPanel x:Name="Stepper">
+                    <TextBlock HorizontalAlignment="Center" x:Name="Section" Margin="0, 20, 0, 12" FontWeight="SemiBold">Setup</TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 0, 12">
+                        <muxc:ProgressBar x:Name="bar1" Width="100" Minimum="0" Maximum="20" Value="10" Margin="4, 0, 4, 0">
+                        </muxc:ProgressBar>
+                        <muxc:ProgressBar x:Name="bar2" Width="100" Minimum="0" Maximum="20" Value="0" Margin="4, 0, 4, 0">
+                        </muxc:ProgressBar>
+                    </StackPanel>
+                    <TextBlock HorizontalAlignment="Center" x:Name="Steps">Step 1/4</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

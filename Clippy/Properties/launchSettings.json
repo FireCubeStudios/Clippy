@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Clippy (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Clippy (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
