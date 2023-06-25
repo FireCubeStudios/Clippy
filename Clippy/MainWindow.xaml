@@ -15,7 +15,7 @@
     xmlns:helpers="using:Clippy.Helpers"
     IsAlwaysOnTop="{x:Bind Clippy.IsPinned, Mode=OneWay}"
     mc:Ignorable="d">
-    <Grid BorderBrush="{ThemeResource MicaBorderBrush}" BorderThickness="0">
+    <Grid x:Name="Background" BorderBrush="{ThemeResource MicaBorderBrush}" BorderThickness="0" PointerMoved="Background_PointerMoved" PointerPressed="Background_PointerPressed">
         <Grid.Resources>
             <DataTemplate x:Key="ClippyTemplate" x:DataType="classes:ClippyMessage">
                 <controls:ClippyMessage Message="{x:Bind Message, Mode=OneWay}" IsSendEnabled="{x:Bind IsLatest, Mode=OneWay}"/>

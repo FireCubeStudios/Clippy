@@ -1,6 +1,8 @@
 ﻿using Clippy.Core.Services;
 using Clippy.Services;
+using Clippy.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -10,6 +12,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -18,6 +21,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
 using WinUIEx;
+using WinRT;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -35,18 +39,17 @@ namespace Clippy
         {
             this.InitializeComponent();
             this.ExtendsContentIntoTitleBar = true;
+            SetTitleBar(AppTitleBar);
+            MicaWindow Mica = new();
+            Mica.TrySetMicaBackdrop(this);
         }
 
         private async void Hub_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri("https://discord.gg/3WYcKat"));
 
         private async void GitHub_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri("https://github.com/FireCube/Clippy-by-FireCube"));
 
-        private void OOBE_Click(object sender, RoutedEventArgs e)
-        {
-          //  OOBEWindow o_window = new OOBEWindow();
-           // o_window.Activate();
-        }
-
         private void Exit_Click(object sender, RoutedEventArgs e) => Application.Current.Exit();
+
+      
     }
 }

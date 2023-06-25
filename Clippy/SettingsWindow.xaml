@@ -17,7 +17,6 @@
         <Border x:Name="AppTitleBar"
                 IsHitTestVisible="True"
                 VerticalAlignment="Top"
-                Background="Transparent"
                 Height="40"
                 Canvas.ZIndex="1" 
                 Margin="12,0,0,0">
@@ -43,7 +42,7 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <ScrollViewer x:Name="SettingsPanel">
+        <ScrollViewer x:Name="SettingsPanel" Margin="0, 48, 0, 0">
             <Grid>
                 <StackPanel x:Name="SettingsGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="100, 50, 300, 100">
                     <StackPanel Margin="4, 4, 4, 24" Orientation="Horizontal">
@@ -116,8 +115,7 @@
                     <TextBlock FontSize="14" Margin="4, 0, 4, 0" TextWrapping="WrapWholeWords">Developed by FireCubeStudios</TextBlock>
                     <HyperlinkButton Margin="4" NavigateUri="https://twitter.com/FireCubeStudios">Follow me on Twitter</HyperlinkButton>
                     <HyperlinkButton Margin="4" NavigateUri="https://discord.gg/3WYcKat">Join Windows Apps Hub</HyperlinkButton>
-                    <HyperlinkButton Margin="4" NavigateUri="https://github.com/FireCube/Clippy-by-FireCube">GitHub repository</HyperlinkButton>
-                    <Button Click="OOBE_Click" Margin="4,12,4,8" Width="150" Style="{ThemeResource ToolbarButton}" BorderThickness="1" BorderBrush="{ThemeResource MicaBorderBrush}">OOBE</Button>
+                    <HyperlinkButton Margin="4" NavigateUri="https://github.com/FireCube/Clippy">GitHub repository</HyperlinkButton>
                     <Button Click="Exit_Click" Margin="4,12,4,8" Width="150" Style="{ThemeResource ToolbarButton}" BorderThickness="1" BorderBrush="{ThemeResource MicaBorderBrush}">Exit</Button>
                 </StackPanel>
             </Grid>

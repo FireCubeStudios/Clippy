@@ -23,6 +23,11 @@
             <GradientStop Color="Red" Offset="0.5" />
             <GradientStop Color="#e96e60" Offset="1.0" />
         </LinearGradientBrush>
+        <LinearGradientBrush x:Name="GreenLinearGradientBrush" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="DarkGreen" Offset="0.0" />
+            <GradientStop Color="Green" Offset="0.5" />
+            <GradientStop Color="LightGreen" Offset="1.0" />
+        </LinearGradientBrush>
         <Style x:Key="KeyGlowPasswordBoxStyle" TargetType="PasswordBox">
             <Setter Property="Foreground" Value="{ThemeResource AccentLinearGradientBrush}" />
             <Setter Property="Background" Value="{ThemeResource SortHvidBrush}" />

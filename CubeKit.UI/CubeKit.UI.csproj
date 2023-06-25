@@ -20,6 +20,7 @@
     <None Remove="Styles\CubeThemeDictionary.xaml" />
     <None Remove="Styles\CubeUI.xaml" />
     <None Remove="Styles\GlowGradientUI.xaml" />
+    <None Remove="Styles\WindowChrome.xaml" />
     <None Remove="Themes\Generic.xaml" />
   </ItemGroup>
 
@@ -34,6 +35,12 @@
       <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230518007-experimental1" />
       <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
       <PackageReference Include="WinUIEx" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\WindowChrome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

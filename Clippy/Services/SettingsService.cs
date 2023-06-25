@@ -40,7 +40,7 @@ namespace Clippy.Services
             }
         }
 
-        private bool translucentBackground = (bool)(Settings.Values["TranslucentBackground"] ?? false);
+        private bool translucentBackground = (bool)(Settings.Values["TranslucentBackground"] ?? true);
         public bool TranslucentBackground
         {
             get => translucentBackground;

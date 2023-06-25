@@ -16,16 +16,21 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Clippy.Pages
+namespace CubeKit.UI.Materials
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class OOBEPage : Page
+    public sealed partial class BloomView : UserControl
     {
-        public OOBEPage()
+        public BloomView()
         {
             this.InitializeComponent();
+            BloomWebView.Height = this.Height;
+            BloomWebView.Width = this.Width;
+        }
+
+        private void Bloom_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            BloomWebView.Height = e.NewSize.Height;
+            BloomWebView.Width = e.NewSize.Width;
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using CubeKit.UI.Icons;
+﻿using Clippy.Core.Services;
+using Clippy.Services;
+using CubeKit.UI.Icons;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -6,6 +9,8 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using OpenAI.Managers;
+using OpenAI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,16 +27,33 @@ namespace Clippy.Controls
 {
     public sealed partial class APIBox : UserControl
     {
+        private KeyService Keys = (KeyService)App.Current.Services.GetService<IKeyService>();
+
         public APIBox()
         {
             this.InitializeComponent();
+            KeyBox.Password = Keys.GetKey();
         }
 
         private void AddApi()
         {
-            KeyBox.Foreground = RedLinearGradientBrush;
-            KeyBox.Focus(FocusState.Programmatic);
-            PasswordLoadAnimation.Start();
+            if (string.IsNullOrEmpty(KeyBox.Password))
+            {
+                Reject();
+                return;
+            }
+            try
+            {
+                OpenAIService AI = new OpenAIService(new OpenAiOptions()
+                {
+                    ApiKey = KeyBox.Password
+                });
+                Keys.SetKey(KeyBox.Password);
+            }
+            catch
+            {
+                Reject();
+            }
         }
 
         private FluentSymbol PrivacyToIcon(bool? boolean) => (boolean ?? false) ? FluentSymbol.EyeShow20 : FluentSymbol.EyeHide20;
@@ -45,5 +67,14 @@ namespace Clippy.Controls
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e) => AddApi();
+
+        private void Accept() => KeyBox.Foreground = GreenLinearGradientBrush;
+
+        private void Reject()
+        {
+            KeyBox.Foreground = RedLinearGradientBrush;
+            KeyBox.Focus(FocusState.Programmatic);
+            PasswordLoadAnimation.Start();
+        }
     }
 }

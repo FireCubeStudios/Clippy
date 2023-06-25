@@ -16,10 +16,10 @@
                     <StackPanel Spacing="4" Background="{ThemeResource MicaBlurBrush}" Padding="12">
                         <local:ShineUITextblock Text="{x:Bind Message, Mode=OneWay}"/>
                         <StackPanel x:Name="Send" Orientation="Horizontal" Spacing="4" x:Load="{x:Bind IsSendEnabled, Mode=OneWay}">
-                            <ToolkitControls:DropShadowPanel ShadowOpacity="0.4" Color="Black" OffsetX="4" CornerRadius="8" Margin="0, 12, 0, 4" OffsetY="4">
+                            <ToolkitControls:DropShadowPanel ShadowOpacity="0.4" Color="Black" OffsetX="4" CornerRadius="8" Margin="0, 12, 0, 0" OffsetY="4">
                                 <TextBox x:Name="SendBox" KeyDown="SendBox_KeyDown" Style="{ThemeResource GlowTextBox}" PlaceholderText="Ask me anything" Width="240" AcceptsReturn="True" TextWrapping="Wrap" MaxLength="1000"/>
                             </ToolkitControls:DropShadowPanel>
-                            <Button Click="Send_Click" Style="{ThemeResource ToolbarButton}">
+                            <Button Click="Send_Click" VerticalAlignment="Bottom" Style="{ThemeResource ToolbarButton}">
                                 <icons:FluentSymbolIcon Symbol="Send20"/>
                             </Button>
                         </StackPanel>

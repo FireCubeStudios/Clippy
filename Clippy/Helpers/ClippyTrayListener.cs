@@ -16,7 +16,7 @@ namespace Clippy.Helpers
         {
             Icon =
            new Bitmap(
-               @$"{Package.Current.InstalledPath}\Assets\LockScreenLogo.scale-200.png"
+               @$"{Package.Current.InstalledPath}\Assets\Clippy\Clippy.png"
            ).GetHicon(),
             Visibility = IconVisibility.Visible,
         };

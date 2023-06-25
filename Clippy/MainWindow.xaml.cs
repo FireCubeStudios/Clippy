@@ -27,7 +27,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Clippy.Services;
 using Clippy.Helpers;
 using Clippy.Core.Services;
-
+using Windows.UI.Input.Preview.Injection;
+using Windows.UI.Input;
+using Windows.Devices.Input;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -76,18 +78,18 @@ namespace Clippy
         }
 
         private double GetScale()
-            {
-                var progmanWindow = NativeHelper.FindWindow("Shell_TrayWnd", null);
-                var monitor = NativeHelper.MonitorFromWindow(progmanWindow, NativeHelper.MONITOR_DEFAULTTOPRIMARY);
+        {
+            var progmanWindow = NativeHelper.FindWindow("Shell_TrayWnd", null);
+            var monitor = NativeHelper.MonitorFromWindow(progmanWindow, NativeHelper.MONITOR_DEFAULTTOPRIMARY);
 
-                NativeHelper.DeviceScaleFactor scale;
-                NativeHelper.GetScaleFactorForMonitor(monitor, out scale);
+            NativeHelper.DeviceScaleFactor scale;
+            NativeHelper.GetScaleFactorForMonitor(monitor, out scale);
 
-                if (scale == NativeHelper.DeviceScaleFactor.DEVICE_SCALE_FACTOR_INVALID)
-                    scale = NativeHelper.DeviceScaleFactor.SCALE_100_PERCENT;
+            if (scale == NativeHelper.DeviceScaleFactor.DEVICE_SCALE_FACTOR_INVALID)
+                scale = NativeHelper.DeviceScaleFactor.SCALE_100_PERCENT;
 
-                return Convert.ToDouble(scale) / 100;
-            }
+            return Convert.ToDouble(scale) / 100;
+        }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
@@ -126,5 +128,9 @@ namespace Clippy
             double H = this.Height * Scale;
             this.MoveAndResize(DisplayWidth - W, DisplayHeight - H, this.Width, this.Height);
         }
+
+        private void Background_PointerPressed(object sender, PointerRoutedEventArgs e) => ClippyInputHelper.PointerPress();
+
+        private void Background_PointerMoved(object sender, PointerRoutedEventArgs e) => ClippyInputHelper.PointerHover();
     }
 }

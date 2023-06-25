@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="ms-appx:///CubeKit.UI/Styles/GlowGradientUI.xaml" />
+                <ResourceDictionary Source="ms-appx:///CubeKit.UI/Styles/WindowChrome.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="GlowNumberBox" TargetType="NumberBox">
                 <Setter Property="IsTabStop" Value="False" />

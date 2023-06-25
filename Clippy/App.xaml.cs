@@ -19,6 +19,8 @@ using Windows.Foundation.Collections;
 using Clippy.Core.ViewModels;
 using Clippy.Core.Services;
 using Clippy.Services;
+using System.Threading.Tasks;
+using System.Runtime.ExceptionServices;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -48,6 +50,9 @@ namespace Clippy
         {
             Services = ConfigureServices();
             this.InitializeComponent();
+            UnhandledException += OnUnhandledException;
+            TaskScheduler.UnobservedTaskException += OnUnobservedException;
+            AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
         }
 
         private static IServiceProvider ConfigureServices()
@@ -55,6 +60,7 @@ namespace Clippy
             var services = new ServiceCollection();
 
             services.AddSingleton<IChatService, ChatGPTService>();
+            services.AddSingleton<IKeyService, KeyService>();
             services.AddSingleton<ISettingsService, SettingsService>();
             services.AddTransient<ClippyViewModel>();
 
@@ -73,5 +79,15 @@ namespace Clippy
         }
 
         private Window m_window;
+
+
+
+        private static void OnUnobservedException(object? sender, UnobservedTaskExceptionEventArgs e) => e.SetObserved();
+
+        private static void OnUnhandledException(object? sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e) => e.Handled = true;
+
+        private void CurrentDomain_FirstChanceException(object? sender, FirstChanceExceptionEventArgs e)
+        {
+        }
     }
 }

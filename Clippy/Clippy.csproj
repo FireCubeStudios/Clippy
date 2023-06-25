@@ -12,10 +12,6 @@
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="OOBEWindow.xaml.cs" />
-    <Compile Remove="Pages\OOBEPage.xaml.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Remove="Assets\Clippy\Clippy.png" />
   </ItemGroup>
   <ItemGroup>
@@ -25,13 +21,7 @@
     <None Remove="Controls\ShineUITextblock.xaml" />
     <None Remove="Controls\UserMessage.xaml" />
     <None Remove="NativeMethods.txt" />
-    <None Remove="OOBEWindow.xaml" />
-    <None Remove="Pages\OOBEPage.xaml" />
     <None Remove="SettingsWindow.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Remove="OOBEWindow.xaml" />
-    <Page Remove="Pages\OOBEPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="NativeMethods.txt" />
@@ -59,6 +49,7 @@
     <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.0.2" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
+    <PackageReference Include="WindowsInput" Version="6.4.1" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -96,6 +87,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\" />
+    <Folder Include="Assets\OOBE\" />
   </ItemGroup>
 </Project>
