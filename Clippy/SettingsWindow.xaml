@@ -92,7 +92,7 @@
                         <ToggleSwitch IsOn="{x:Bind Settings.TrayClippy, Mode=TwoWay}" Style="{ThemeResource GlowSwitch}" OnContent="On" HorizontalAlignment="Right" OffContent="Off"/>
                     </settings:SettingsBlockControl>
                     <TextBlock FontSize="14" FontWeight="SemiBold" Margin="4, 28, 4, 2">Information</TextBlock>
-                    <settings:SettingsBlockControl Title="Contact the developer, See new features, Get app support" Margin="2" Description="Jon the Windows Apps Hub">
+                    <settings:SettingsBlockControl Title="Contact the developer, See new features, Get app support" Margin="2" Description="Join the Windows Apps Hub">
                         <settings:SettingsBlockControl.Icon>
                             <icons:FluentIconElement VerticalAlignment="Center" Symbol="people24"/>
                         </settings:SettingsBlockControl.Icon>
@@ -115,7 +115,7 @@
                     <TextBlock FontSize="14" Margin="4, 0, 4, 0" TextWrapping="WrapWholeWords">Developed by FireCubeStudios</TextBlock>
                     <HyperlinkButton Margin="4" NavigateUri="https://twitter.com/FireCubeStudios">Follow me on Twitter</HyperlinkButton>
                     <HyperlinkButton Margin="4" NavigateUri="https://discord.gg/3WYcKat">Join Windows Apps Hub</HyperlinkButton>
-                    <HyperlinkButton Margin="4" NavigateUri="https://github.com/FireCube/Clippy">GitHub repository</HyperlinkButton>
+                    <HyperlinkButton Margin="4" NavigateUri="https://github.com/FireCubeStudio/Clippy">GitHub repository</HyperlinkButton>
                     <Button Click="Exit_Click" Margin="4,12,4,8" Width="150" Style="{ThemeResource ToolbarButton}" BorderThickness="1" BorderBrush="{ThemeResource MicaBorderBrush}">Exit</Button>
                 </StackPanel>
             </Grid>
