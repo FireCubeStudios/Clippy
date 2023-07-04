@@ -30,6 +30,8 @@ using Clippy.Core.Services;
 using Windows.UI.Input.Preview.Injection;
 using Windows.UI.Input;
 using Windows.Devices.Input;
+using CommunityToolkit.WinUI.Helpers;
+using Clippy.Controls;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -129,8 +131,8 @@ namespace Clippy
             this.MoveAndResize(DisplayWidth - W, DisplayHeight - H, this.Width, this.Height);
         }
 
-        private void Background_PointerPressed(object sender, PointerRoutedEventArgs e) => ClippyInputHelper.PointerPress();
+        private void Background_PointerPressed(object sender, PointerRoutedEventArgs e) => ClippyInputHelper.PointerPress(this.GetWindowHandle());
 
-        private void Background_PointerMoved(object sender, PointerRoutedEventArgs e) => ClippyInputHelper.PointerHover();
+        private void Background_PointerMoved(object sender, PointerRoutedEventArgs e) => ClippyInputHelper.PointerHover(this.GetWindowHandle());
     }
 }

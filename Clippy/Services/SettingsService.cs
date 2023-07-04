@@ -77,5 +77,16 @@ namespace Clippy.Services
                 SetProperty(ref keyboardEnabled, value);
             }
         }
+
+        private static bool hasKey = (bool)(Settings.Values["HasKey"] ?? false);
+        public bool HasKey
+        {
+            get => hasKey;
+            set
+            {
+                Settings.Values["HasKey"] = value;
+                hasKey = value;
+            }
+        }
     }
 }

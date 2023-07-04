@@ -2,7 +2,6 @@
     x:Class="Clippy.Controls.APIBox"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Clippy.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:Icons="using:CubeKit.UI.Icons" 
@@ -259,26 +258,33 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <StackPanel Orientation="Horizontal" Spacing="12">
-        <toolkit:DropShadowPanel ShadowOpacity="0.4" OffsetX="4" CornerRadius="8" Margin="0, 12, 0, 16" OffsetY="4">
-            <PasswordBox x:Name="KeyBox" Width="340" PasswordRevealMode="{x:Bind PrivacyToPassword(PasswordVisbility.IsChecked), Mode=OneWay}" PlaceholderText="Enter your OpenAI Api key here..." KeyDown="ApiBox_KeyDown" Style="{ThemeResource KeyGlowPasswordBoxStyle}">
-                <ani:Explicit.Animations>
-                    <ani:AnimationSet x:Name="PasswordLoadAnimation" IsSequential="True">
-                        <ani:OffsetAnimation From="0" To="8,0,0" Duration="0:0:0.0625"/>
-                        <ani:OffsetAnimation From="8,0,0" To="-8,0,0" Duration="0:0:0.125"/>
-                        <ani:OffsetAnimation From="-8,0,0" To="6,0,0" Duration="0:0:0.109375"/>
-                        <ani:OffsetAnimation From="6,0,0" To="-6,0,0" Duration="0:0:0.09375"/>
-                        <ani:OffsetAnimation From="-6,0,0" To="2,0,0" Duration="0:0:0.0625"/>
-                        <ani:OffsetAnimation From="-2,0,0" To="0,0,0" Duration="0:0:0.015625"/>
-                    </ani:AnimationSet>
-                </ani:Explicit.Animations>
-            </PasswordBox>
-        </toolkit:DropShadowPanel>
-        <ToggleButton x:Name="PasswordVisbility" Style="{ThemeResource ToolbarToggleButton}" IsChecked="False" Height="32">
-            <Icons:FluentSymbolIcon Symbol="{x:Bind PrivacyToIcon(PasswordVisbility.IsChecked), Mode=OneWay}" Foreground="{ThemeResource HvidSortBrush}"/>
-        </ToggleButton>
-        <Button Click="Submit_Click" Style="{ThemeResource ToolbarButton}" Height="32">
-            <Icons:FluentSymbolIcon Symbol="Save20"/>
-        </Button>
+    <StackPanel Padding="12">
+        <StackPanel Orientation="Horizontal" Spacing="12">
+            <toolkit:DropShadowPanel ShadowOpacity="0.4" OffsetX="4" CornerRadius="8" Margin="0, 12, 0, 16" OffsetY="4">
+                <PasswordBox x:Name="KeyBox" Width="340" PasswordRevealMode="{x:Bind PrivacyToPassword(PasswordVisbility.IsChecked), Mode=OneWay}" PlaceholderText="Enter your OpenAI Api key here..." KeyDown="ApiBox_KeyDown" Style="{ThemeResource KeyGlowPasswordBoxStyle}">
+                    <ani:Explicit.Animations>
+                        <ani:AnimationSet x:Name="KeyLoadAnimation" IsSequential="True">
+                            <ani:OffsetAnimation From="0" To="8,0,0" Duration="0:0:0.0625"/>
+                            <ani:OffsetAnimation From="8,0,0" To="-8,0,0" Duration="0:0:0.125"/>
+                            <ani:OffsetAnimation From="-8,0,0" To="6,0,0" Duration="0:0:0.109375"/>
+                            <ani:OffsetAnimation From="6,0,0" To="-6,0,0" Duration="0:0:0.09375"/>
+                            <ani:OffsetAnimation From="-6,0,0" To="2,0,0" Duration="0:0:0.0625"/>
+                            <ani:OffsetAnimation From="-2,0,0" To="0,0,0" Duration="0:0:0.015625"/>
+                        </ani:AnimationSet>
+                    </ani:Explicit.Animations>
+                </PasswordBox>
+            </toolkit:DropShadowPanel>
+            <ToggleButton x:Name="PasswordVisbility" Style="{ThemeResource ToolbarToggleButton}" IsChecked="False" Height="32">
+                <Icons:FluentSymbolIcon Symbol="{x:Bind PrivacyToIcon(PasswordVisbility.IsChecked), Mode=OneWay}" Foreground="{ThemeResource HvidSortBrush}"/>
+            </ToggleButton>
+            <Button Click="Submit_Click" Style="{ThemeResource ToolbarButton}" Height="32">
+                <Icons:FluentSymbolIcon Symbol="Save20"/>
+            </Button>
+            <Button Click="Delete_Click" Style="{ThemeResource ToolbarButton}" Height="32">
+                <Icons:FluentSymbolIcon Symbol="Delete20" Margin="0, 0, 1, 0"/>
+            </Button>
+            <ProgressRing x:Name="Ring" Visibility="Collapsed" IsIndeterminate="True" IsActive="True" Height="28" Width="28"/>
+        </StackPanel>
+        <TextBlock x:Name="ErrorBlock" MaxWidth="500" TextWrapping="Wrap" Foreground="#e96e60"/>
     </StackPanel>
 </UserControl>

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,15 +29,14 @@ namespace Clippy.Core.Services
         {
             Settings = settings;
             KeyService = keys;
-            if (SetAPI()) // Refresh API key
+            if (SetAPI() || Settings.HasKey) // Refresh API key
                 Add(new ClippyMessage(ClippyStart, true));
         }
              
         public void Refresh()
         {
             Messages.Clear();
-            SetAPI();
-            if(SetAPI()) // Refresh API key
+            if(SetAPI() || Settings.HasKey) // Refresh API key
                 Add(new ClippyMessage(ClippyStart, true));
         }
 
@@ -73,7 +73,7 @@ namespace Clippy.Core.Services
             }
             else
             {
-                Response.Message = $"Unfortunately an error occured `{completionResult.Error}`";
+                Response.Message = $"Unfortunately an error occured `{completionResult.Error.Message}`";
                 Response.IsLatest = false;
             }
         }

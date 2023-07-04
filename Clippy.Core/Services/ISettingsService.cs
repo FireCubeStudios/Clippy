@@ -10,6 +10,7 @@ namespace Clippy.Core.Services
         public bool TrayClippy { get; set; }
         public bool TranslucentBackground { get; set; }
         public bool KeyboardEnabled { get; set; }
+        public bool HasKey { get; set; }
         public int Tokens { get; set; }
     }
 }

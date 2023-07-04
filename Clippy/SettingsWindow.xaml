@@ -111,7 +111,7 @@
                 <StackPanel Margin="80, 100, 12, 40" Width="200" x:Name="AboutPanel" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <TextBlock FontSize="14" FontWeight="SemiBold" Margin="4, 4, 4, 2">About this app</TextBlock>
                     <StackPanel Margin="4, 0, 4, 0" Orientation="Horizontal">
-                        <TextBlock Opacity="0.7" FontSize="14" Margin="0, 0, 0, 0">1.0</TextBlock>
+                        <TextBlock Opacity="0.7" FontSize="14" Margin="0, 0, 0, 0">1.1</TextBlock>
                     </StackPanel>
                     <TextBlock FontSize="14" Margin="4, 0, 4, 0" TextWrapping="WrapWholeWords">Developed by FireCubeStudios</TextBlock>
                     <HyperlinkButton Margin="4" NavigateUri="https://twitter.com/FireCubeStudios">Follow me on Twitter</HyperlinkButton>

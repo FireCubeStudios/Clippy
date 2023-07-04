@@ -21,6 +21,9 @@ using Clippy.Core.Services;
 using Clippy.Services;
 using System.Threading.Tasks;
 using System.Runtime.ExceptionServices;
+using Clippy.Helpers;
+using CommunityToolkit.WinUI.Helpers;
+using Windows.UI.Core;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -74,6 +77,13 @@ namespace Clippy
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
+
+
+        SettingsService Settings = (SettingsService)App.Current.Services.GetService<ISettingsService>();
+            if (SystemInformation.Instance.IsAppUpdated) // Transiiton to key checker
+            {
+                Settings.HasKey = !String.IsNullOrEmpty(new KeyService().GetKey());
+            }
             m_window = new MainWindow();
             m_window.Activate();
         }
