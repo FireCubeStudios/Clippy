@@ -28,17 +28,13 @@ Clippy can be pinned to the screen for quick access to chat or just be left for 
   
 Get Clippy on [Microsoft Store](https://apps.microsoft.com/store/detail/protecc-2fa-client/9PJX91M06TZS)
 
-
-https://github.com/kspearrin/Otp.NET
+## Discord
+- Join our [Discord Channel](https://discord.gg/3WYcKat)
   
   ### Architecture of app:
 - CubeKit.UI - Contains GlowUI and helper methods
 - Clippy.Core - Contains most of chat logic including interfaces IChatService and an implementation for OpenAI key official
 - Clippy - App with UI, Windows, Message design and logic of UI (message loading)
-
-## Discord
-- Join our [Discord Channel](https://discord.gg/3WYcKat)
-
 
 <hr>
 <h6 align="center">© FireCubeStudios. 2023
