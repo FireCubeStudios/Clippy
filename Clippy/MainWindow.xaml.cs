@@ -67,11 +67,11 @@ namespace Clippy
             ClippyKeyboardListener.Setup(this);
             ClippyTrayListener.Setup(this);
 
-           // if(SystemInformation.Instance.IsAppUpdated)
-           // {
+           if(SystemInformation.Instance.IsAppUpdated)
+            {
                 Clippy.ChatService.Messages.Add(new Clippy.Core.Classes.AnnouncementMessage("Did you know Clippy is open source? Help support it by adding a star on GithHub! https://github.com/FireCubeStudios/Clippy"));
             Clippy.ChatService.Messages.Add(new Clippy.Core.Classes.AnnouncementMessage("Update: Bug fixes, Improved api box experience, Better error messages. Upcoming: GPT4, free api via reverse proxy, animations, additnal characters (Rover, Bonzi, Classic Clippy), Optional ability to execute tasks on computer like Copilot. Follow the development of these features in the Windows Apps Hub: https://discord.com/invite/3WYcKat"));
-            // }
+             }
 
             Collapse();
         }
