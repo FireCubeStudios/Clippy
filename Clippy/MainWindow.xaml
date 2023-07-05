@@ -16,7 +16,7 @@
     xmlns:helpers="using:Clippy.Helpers"
     IsAlwaysOnTop="{x:Bind Clippy.IsPinned, Mode=OneWay}"
     mc:Ignorable="d">
-    <Grid x:Name="Background" BorderBrush="{ThemeResource MicaBorderBrush}" BorderThickness="0" PointerMoved="Background_PointerMoved" PointerPressed="Background_PointerPressed">
+    <Grid x:Name="Background" BorderBrush="{ThemeResource MicaBorderBrush}" BorderThickness="0">
         <Grid.Resources>
             <DataTemplate x:Key="ClippyTemplate" x:DataType="classes:ClippyMessage">
                 <controls:ClippyMessage Message="{x:Bind Message, Mode=OneWay}" IsSendEnabled="{x:Bind IsLatest, Mode=OneWay}"/>
@@ -26,8 +26,13 @@
                 <controls:UserMessage Message="{x:Bind Message, Mode=OneWay}"/>
             </DataTemplate>
 
+            <DataTemplate x:Key="AnnouncementTemplate" x:DataType="classes:AnnouncementMessage">
+                <controls:AnnouncementMessage Message="{x:Bind Message, Mode=OneWay}"/>
+            </DataTemplate>
+
             <helpers:MessageSelector x:Key="MessageTemplateSelector"
                 Clippy="{StaticResource ClippyTemplate}"
+                Announcement="{StaticResource AnnouncementTemplate}"
                 User="{StaticResource UserTemplate}"/>
         </Grid.Resources>
         <Grid Canvas.ZIndex="0" Background="{ThemeResource LayerFillColorDefaultBrush}" Visibility="{x:Bind BtoV(Settings.TranslucentBackground), Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>

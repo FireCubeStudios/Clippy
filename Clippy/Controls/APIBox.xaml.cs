@@ -97,8 +97,17 @@ namespace Clippy.Controls
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            new KeyService().SetKey("");
-            Settings.HasKey = false;
+            try
+            {
+                KeyBox.Foreground = AccentLinearGradientBrush;
+                new KeyService().RemoveKey();
+                KeyBox.Password = "";
+                Settings.HasKey = false;
+            }
+            catch
+            {
+                Reject();
+            }
         }
 
         private void Accept()

@@ -8,5 +8,6 @@ namespace Clippy.Core.Services
     {
         public string GetKey();
         public void SetKey(string key);
+        public void RemoveKey();
     }
 }

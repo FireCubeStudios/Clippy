@@ -5,7 +5,7 @@
     xmlns:local="using:Clippy.Controls"
     xmlns:ToolkitControls="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:icons="using:CubeKit.UI.Icons"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid>
         <StackPanel>

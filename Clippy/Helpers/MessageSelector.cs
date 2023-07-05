@@ -13,11 +13,14 @@ namespace Clippy.Helpers
     {
         public DataTemplate Clippy { get; set; }
         public DataTemplate User { get; set; }
+        public DataTemplate Announcement { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item)
         {
             if (item is ClippyMessage)
                 return Clippy;
+            else if (item is AnnouncementMessage)
+                return Announcement;
             else
                 return User;
         }

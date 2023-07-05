@@ -26,6 +26,7 @@
     <Content Remove="Assets\Clippy\Clippy.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Controls\AnnouncementMessage.xaml" />
     <None Remove="Controls\APIBox.xaml" />
     <None Remove="Controls\ClippyMessage.xaml" />
     <None Remove="Controls\MessageTriangle.xaml" />
@@ -78,6 +79,9 @@
     <None Update="Assets\Clippy\Clippy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="Controls\AnnouncementMessage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Controls\APIBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

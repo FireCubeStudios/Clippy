@@ -56,7 +56,7 @@ namespace Clippy.Core.Services
             {
                 if (message is ClippyMessage)
                     GPTMessages.Add(ChatMessage.FromAssistant(m.Message));
-                else
+                else if (message is UserMessage)
                     GPTMessages.Add(ChatMessage.FromUser(m.Message));
             }
             await Task.Delay(300);
@@ -108,7 +108,7 @@ namespace Clippy.Core.Services
             }
             catch
             {
-                Add(new ClippyMessage(ClippyKey, false));
+                Add(new AnnouncementMessage(ClippyKey));
                 return false;
             }
         }

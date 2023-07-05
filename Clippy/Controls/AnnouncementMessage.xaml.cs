@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -19,7 +18,7 @@ using Windows.Foundation.Collections;
 
 namespace Clippy.Controls
 {
-    public sealed partial class UserMessage : UserControl
+    public sealed partial class AnnouncementMessage : UserControl
     {
         public string Message
         {
@@ -28,8 +27,10 @@ namespace Clippy.Controls
         }
 
         public static readonly DependencyProperty MessageProperty =
-                   DependencyProperty.Register("Message", typeof(string), typeof(UserMessage), null);
+                   DependencyProperty.Register("Message", typeof(string), typeof(AnnouncementMessage), null);
 
-        public UserMessage() => this.InitializeComponent();
+        public AnnouncementMessage() => this.InitializeComponent();
+
+
     }
 }

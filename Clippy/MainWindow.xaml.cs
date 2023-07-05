@@ -67,6 +67,12 @@ namespace Clippy
             ClippyKeyboardListener.Setup(this);
             ClippyTrayListener.Setup(this);
 
+           // if(SystemInformation.Instance.IsAppUpdated)
+           // {
+                Clippy.ChatService.Messages.Add(new Clippy.Core.Classes.AnnouncementMessage("Did you know Clippy is open source? Help support it by adding a star on GithHub! https://github.com/FireCubeStudios/Clippy"));
+            Clippy.ChatService.Messages.Add(new Clippy.Core.Classes.AnnouncementMessage("Update: Bug fixes, Improved api box experience, Better error messages. Upcoming: GPT4, free api via reverse proxy, animations, additnal characters (Rover, Bonzi, Classic Clippy), Optional ability to execute tasks on computer like Copilot. Follow the development of these features in the Windows Apps Hub: https://discord.com/invite/3WYcKat"));
+            // }
+
             Collapse();
         }
 
@@ -131,8 +137,8 @@ namespace Clippy
             this.MoveAndResize(DisplayWidth - W, DisplayHeight - H, this.Width, this.Height);
         }
 
-        private void Background_PointerPressed(object sender, PointerRoutedEventArgs e) => //ClippyInputHelper.PointerPress(this.GetWindowHandle());
+       // private void Background_PointerPressed(object sender, PointerRoutedEventArgs e) => //ClippyInputHelper.PointerPress(this.GetWindowHandle());
 
-        private void Background_PointerMoved(object sender, PointerRoutedEventArgs e) => //ClippyInputHelper.PointerHover(this.GetWindowHandle());
+    //    private void Background_PointerMoved(object sender, PointerRoutedEventArgs e) => //ClippyInputHelper.PointerHover(this.GetWindowHandle());
     }
 }
