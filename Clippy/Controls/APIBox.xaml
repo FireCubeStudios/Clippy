@@ -261,7 +261,7 @@
     <StackPanel Padding="12">
         <StackPanel Orientation="Horizontal" Spacing="12">
             <toolkit:DropShadowPanel ShadowOpacity="0.4" OffsetX="4" CornerRadius="8" Margin="0, 12, 0, 16" OffsetY="4">
-                <PasswordBox x:Name="KeyBox" Width="340" PasswordRevealMode="{x:Bind PrivacyToPassword(PasswordVisbility.IsChecked), Mode=OneWay}" PlaceholderText="Enter your OpenAI Api key here..." KeyDown="ApiBox_KeyDown" Style="{ThemeResource KeyGlowPasswordBoxStyle}">
+                <PasswordBox x:Name="KeyBox" Width="340" PasswordRevealMode="{x:Bind PrivacyToPassword(PasswordVisbility.IsChecked), Mode=OneWay}" PlaceholderText="Enter your OpenAI Api key here..." KeyDown="ApiBox_KeyDown" Style="{ThemeResource KeyGlowPasswordBoxStyle}" Foreground="{ThemeResource AccentLinearGradientBrush}">
                     <ani:Explicit.Animations>
                         <ani:AnimationSet x:Name="KeyLoadAnimation" IsSequential="True">
                             <ani:OffsetAnimation From="0" To="8,0,0" Duration="0:0:0.0625"/>

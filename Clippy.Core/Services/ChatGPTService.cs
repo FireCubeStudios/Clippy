@@ -42,6 +42,11 @@ namespace Clippy.Core.Services
 
         public async Task SendAsync(IMessage message) /// Send a message
         {
+            if(!Settings.HasKey)
+            {
+                Add(new ClippyMessage(ClippyKey, false));
+                return;
+            }
             Add(message); // Send user message to UI
             List<ChatMessage> GPTMessages = new List<ChatMessage>
             {

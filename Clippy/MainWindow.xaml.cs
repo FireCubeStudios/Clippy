@@ -131,8 +131,8 @@ namespace Clippy
             this.MoveAndResize(DisplayWidth - W, DisplayHeight - H, this.Width, this.Height);
         }
 
-        private void Background_PointerPressed(object sender, PointerRoutedEventArgs e) => ClippyInputHelper.PointerPress(this.GetWindowHandle());
+        private void Background_PointerPressed(object sender, PointerRoutedEventArgs e) => //ClippyInputHelper.PointerPress(this.GetWindowHandle());
 
-        private void Background_PointerMoved(object sender, PointerRoutedEventArgs e) => ClippyInputHelper.PointerHover(this.GetWindowHandle());
+        private void Background_PointerMoved(object sender, PointerRoutedEventArgs e) => //ClippyInputHelper.PointerHover(this.GetWindowHandle());
     }
 }

@@ -35,7 +35,8 @@ namespace Clippy.Controls
         public APIBox()
         {
             this.InitializeComponent();
-            KeyBox.Password = Keys.GetKey();
+            if(Settings.HasKey)
+                KeyBox.Password = Keys.GetKey();
         }
 
         private async void AddApi()

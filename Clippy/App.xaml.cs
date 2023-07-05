@@ -83,7 +83,7 @@ namespace Clippy
             if (SystemInformation.Instance.IsAppUpdated) // Transiiton to key checker
             {
                 Settings.HasKey = !String.IsNullOrEmpty(new KeyService().GetKey());
-            }
+          }
             m_window = new MainWindow();
             m_window.Activate();
         }

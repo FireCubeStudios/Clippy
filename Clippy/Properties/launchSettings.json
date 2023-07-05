@@ -1,7 +1,8 @@
 {
   "profiles": {
     "Clippy (Package)": {
-      "commandName": "MsixPackage"
+      "commandName": "MsixPackage",
+      "nativeDebugging": true
     },
     "Clippy (Unpackaged)": {
       "commandName": "Project"
