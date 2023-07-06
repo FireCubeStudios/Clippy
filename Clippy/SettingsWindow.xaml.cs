@@ -40,8 +40,8 @@ namespace Clippy
             this.InitializeComponent();
             this.ExtendsContentIntoTitleBar = true;
             SetTitleBar(AppTitleBar);
-            MicaWindow Mica = new();
-            Mica.TrySetMicaBackdrop(this);
+           // MicaWindow Mica = new();
+           // Mica.TrySetMicaBackdrop(this);
         }
 
         private async void Hub_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri("https://discord.gg/3WYcKat"));
