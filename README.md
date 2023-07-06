@@ -26,7 +26,7 @@ Clippy can be pinned to the screen for quick access to chat or just be left for 
 
 <a href="https://apps.microsoft.com/store/detail/clippy-by-firecube/9NWK37S35V5T"><img width="35%" src="https://raw.githubusercontent.com/FireCubeStudios/Protecc/711c253df88f36aa63f55b88bafae16a979c69e0/Assets/Get_it_from_Microsoft_Badge.svg" alt="Get Clippy from Microsoft Store"></a>
   
-Get Clippy on [Microsoft Store](https://apps.microsoft.com/store/detail/protecc-2fa-client/9PJX91M06TZS)
+Get Clippy on [Microsoft Store](https://apps.microsoft.com/store/detail/clippy-by-firecube/9NWK37S35V5T)
 
 ## Discord
 - Join our [Discord Channel](https://discord.gg/3WYcKat)
