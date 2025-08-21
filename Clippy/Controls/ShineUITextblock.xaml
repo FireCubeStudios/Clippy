@@ -1,0 +1,20 @@
+﻿<UserControl
+    x:Class="Clippy.Controls.ShineUITextblock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Clippy.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:ToolkitControls="using:CommunityToolkit.WinUI.UI.Controls" 
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    mc:Ignorable="d">
+
+    <Grid>
+        <ToolkitControls:MarkdownTextBlock x:Name="MarkdownBlock" LinkClicked="MarkdownTextBlock_LinkClicked" Text="{x:Bind Text, Mode=OneWay}" Background="Transparent" Width="290" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"/>
+        <StackPanel x:Name="Shimmer" Spacing="10" Margin="0, 6, 4, 6">
+            <labs:Shimmer Width="284" Height="10"/>
+            <labs:Shimmer Width="284" Height="10"/>
+            <labs:Shimmer Width="244" Height="10" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

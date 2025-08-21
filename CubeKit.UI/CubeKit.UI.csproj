@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <RootNamespace>CubeKit.UI</RootNamespace>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+    <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Controls\Toolkit\**" />
+    <Content Remove="Controls\Toolkit\**" />
+    <EmbeddedResource Remove="Controls\Toolkit\**" />
+    <None Remove="Controls\Toolkit\**" />
+    <Page Remove="Controls\Toolkit\**" />
+    <PRIResource Remove="Controls\Toolkit\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Controls\Settings\SettingsBlockControl.xaml" />
+    <None Remove="Controls\Settings\SettingsDisplayControl.xaml" />
+    <None Remove="Styles\CubeThemeDictionary.xaml" />
+    <None Remove="Styles\CubeUI.xaml" />
+    <None Remove="Styles\GlowGradientUI.xaml" />
+    <None Remove="Styles\WindowChrome.xaml" />
+    <None Remove="Themes\Generic.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+      <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
+      <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.183">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
+      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.250602001" />
+      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.4948" />
+      <PackageReference Include="WinUIEx" Version="2.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\WindowChrome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Settings\SettingsDisplayControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Settings\SettingsBlockControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\CubeUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\CubeThemeDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\GlowGradientUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
